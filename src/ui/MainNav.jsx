@@ -1,12 +1,14 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-
+import { HiOutlineCalendar,HiOutlineHome, HiOutlineHomeModern, HiOutlineUser, HiOutlineWrenchScrewdriver  } from "react-icons/hi2";
+import { HiOutlineLogin } from "react-icons/hi";
 const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 `;
 
-const Link = styled.a`
+const StyledNavLink = styled(NavLink)`
   &:link,
   &:visited {
     display: flex;
@@ -26,7 +28,7 @@ const Link = styled.a`
   &.active:link,
   &.active:visited {
     color: var(--color-grey-800);
-    background-color: var(--color-grey-50);
+    background-color: var(--color-grey-100);
     border-radius: var(--border-radius-sm);
   }
 
@@ -44,3 +46,37 @@ const Link = styled.a`
     color: var(--color-brand-600);
   }
 `;
+function MainNav() {
+  return (
+    <NavList>
+      <li><StyledNavLink to='/dashboard'><HiOutlineHome/>
+      
+      <span>Home</span>
+      </StyledNavLink></li>
+      
+      <li><StyledNavLink to='/users'><HiOutlineUser/>
+      <span>Users</span></StyledNavLink></li>
+      <li><StyledNavLink to='/bookings'><HiOutlineCalendar/>
+      <span>Bookings</span>
+      </StyledNavLink></li>
+      <li><StyledNavLink to='/cabins'>
+        <HiOutlineHomeModern/>
+        <span>
+        Cabins
+        </span>
+          </StyledNavLink></li>
+      <li><StyledNavLink to='/login'><HiOutlineLogin/>
+      <span>Login</span>
+      </StyledNavLink>
+      </li>
+      <li><StyledNavLink to='/settings'>
+        <HiOutlineWrenchScrewdriver/>
+       <span> Settings</span>
+        </StyledNavLink>
+        </li>
+    </NavList>
+  )
+}
+
+export default MainNav
+

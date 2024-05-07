@@ -15,7 +15,7 @@ ${props=>props.type==='h3'&&
  css`font-size:2rem;
 font-weight: 500;`}
 
-background-color:green;
+
 
 
 `
