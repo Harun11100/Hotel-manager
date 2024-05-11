@@ -48,7 +48,7 @@ function CabinRow({cabin}) {
 console.log(cabin)
     
  
-  const {id:cabinID,name,maxCapasity,regularPrice,discount,image
+  const {id:cabinID,name,maxCapacity,regularPrice,discount,image
   }=cabin
   
   const queryClient=useQueryClient()
@@ -65,7 +65,7 @@ console.log(cabin)
    <TableRow>
     <Img src={image}/>
     <Cabin>{name}</Cabin>
-    <div>Fits up to {maxCapasity} guests</div>
+    <div>Fits up to {maxCapacity} guests</div>
     <Price>{formatCurrency(regularPrice)}</Price>
      <Discount >{formatCurrency(discount)}</Discount>
    

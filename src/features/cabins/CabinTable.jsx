@@ -31,11 +31,11 @@ function CabinTable() {
   const  {isLoading,data:cabins} =useQuery({
   queryKey:['cabins'],
   queryFn : getCabins 
- })
+ });
  
   if(isLoading)
     return
-    <Spinner/>
+    <Spinner/>;
   
   return (
    <Table role="table" >
