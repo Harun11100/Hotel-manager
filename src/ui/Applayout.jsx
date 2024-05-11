@@ -18,7 +18,14 @@ const StyledApplayout=styled.div`
  
 
 `
+const Container=styled.div`
+ max-width: 120rem;
+ margin:0 auto;
+ display: flex;
+ flex-direction: column;
+ gap: 2.3rem;
 
+`
 
 
 function Applayout() {
@@ -28,7 +35,10 @@ function Applayout() {
                   <Header/>
                   <Sidebar/>
                 <Main>
-                   <Outlet/>
+                  <Container>
+                      <Outlet/>
+                  </Container>
+                 
                 </Main>
                  
             </StyledApplayout>
