@@ -65,10 +65,10 @@ const {mutate,isLoading:isCreating}=useMutation({
 
 
 function onSubmit(data){
-  mutate(data); 
- 
+  mutate({...data,image:data.image[0]}); 
+ console.log(data)
 
-}
+} 
 
 function onError(errors){
   console.log(errors)
@@ -154,7 +154,9 @@ function onError(errors){
 
       <FormRow>
         <Label htmlFor="image">Cabin photo</Label>
-        <FileInput id="image" accept="image/*" />
+        <FileInput id="image" 
+         accept="image/*"  {...register('image',{required:"This field is required"})}/>
+      {errors?.image?.message&&<Error>{errors.image.message}</Error>}
       </FormRow>
 
       <FormRow>
