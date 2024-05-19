@@ -48,7 +48,7 @@ const Error = styled.span`
 `;
 
 
-function CreateCabinForm() {
+function CreateCabinForm({onCloseModal}) {
   const {register,handleSubmit,getValues,reset,formState}=useForm()
 const {errors}=formState;
  
@@ -59,7 +59,11 @@ const {createCabin,isCreating}=useCreateCabin()
 
 function onSubmit(data){
   console.log(createCabin)
-  createCabin({...data,image:data.image[0]},{onSuccess:()=>reset()}); 
+  createCabin({...data,image:data.image[0]},{
+    onSuccess:()=>{
+      reset();
+      onCloseModal?.();
+    }}); 
   
 
 
@@ -70,7 +74,7 @@ function onError(errors){
 } 
 
   return ( 
-    <Form onSubmit={handleSubmit(onSubmit,onError)}>
+    <Form onSubmit={handleSubmit(onSubmit,onError)} type={onCloseModal?'modal':'regular'}>
       
       <FormRow>
         <Label htmlFor="name">Cabin name</Label>
@@ -158,7 +162,7 @@ function onError(errors){
         
           
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button variation="secondary" type="reset" onClick={()=>onCloseModal?.()}>
           Cancel
         </Button>
          
