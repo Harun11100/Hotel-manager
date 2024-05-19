@@ -76,10 +76,12 @@ return<StyledHeader role='row' columns={columns} as='header'>
 {children}
 </StyledHeader> 
 }
-function Body({children}){
-  const {columns}=useContext(TableContext)
-  return<StyledBody role='row' columns={columns}> 
-  {children}
+function Body({data,render}){
+
+  if(!data.length)return <Empty>No data is found </Empty>
+
+  return<StyledBody> 
+  {data.map(render)}
   </StyledBody> 
 }
 function Row({children}){
