@@ -7,29 +7,6 @@ import { useCabin } from "./useCabin";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
-// const Table = styled.div`
-//   border: 1px solid var(--color-grey-200);
-
-//   font-size: 1.4rem;
-//   background-color: var(--color-grey-0);
-//   border-radius: 7px;
-//   overflow: hidden;
-// `;
- 
-// const TableHeader = styled.header`
-//   display: grid;
-//   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
-//   column-gap: 2.4rem;
-//   align-items: center;
-
-//   background-color: var(--color-grey-50);
-//   border-bottom: 1px solid var(--color-grey-100);
-//   text-transform: uppercase;
-//   letter-spacing: 0.4px;
-//   font-weight: 600;
-//   color: var(--color-grey-600);
-//   padding: 1.6rem 2.4rem;
-// `;
 
 function CabinTable() {
  
@@ -37,7 +14,7 @@ function CabinTable() {
   const [searchParams]=useSearchParams();
   if(isLoading)
     return<Spinner/>;
-  
+  ////////////Filter/////////////
   const filterValue=searchParams.get('discount')||'all'
   
   let filteredCabin;
@@ -50,6 +27,14 @@ function CabinTable() {
   filter(
     cabin=>cabin.discount>0
   )
+
+  ////////////Sorting/////////////
+
+  const sortBy =searchParams.get('sortBy')||'startDate-asc';
+  const [field,direction]=sortBy.split('-');
+  const modifier=direction==='asc'?1:-1
+  const sortedCabins= filteredCabin.sort((a,b)=>(a[field]-b[field])*modifier)
+  
   return (
     <Menus>
    <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr" >
@@ -66,7 +51,8 @@ function CabinTable() {
      
     </Table.Header> 
     <Table.Body  
-    data={filteredCabin} 
+    data={sortedCabins}
+    // data={filteredCabin} 
     render={cabin=><CabinRow cabin={cabin} key={cabin.id}/>}/>
    
    </Table>

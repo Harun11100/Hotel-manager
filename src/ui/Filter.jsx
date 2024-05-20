@@ -49,7 +49,8 @@ const currentFilter=searchParams.get(filterField)||options.at(0).value
     <FilterButton 
      key={option.value}
      onClick={()=>handleClick(option.value)}
-     active={option.value===currentFilter}>
+     active={option.value===currentFilter}
+     disabled={option.value===currentFilter}>
       {option.label}
     </FilterButton>
   ))}
