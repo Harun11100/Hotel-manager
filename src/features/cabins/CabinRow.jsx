@@ -89,31 +89,29 @@ function CabinRow({cabin}) {
     {discount? <Discount >{formatCurrency(discount)}</Discount>:
     <span>&mdash; &mdash;</span> }
    <div>
-      {/* <button disabled={isCreating} 
-       onClick={()=>handleDuplicate()}>
-      <HiSquare2Stack/>
-       </button> */}
-      <Modal>
-      <Modal.Open opens='delete'>
-      <button disabled={isDeleting}><HiTrash/></button>
-      </Modal.Open>
-      <Modal.Window name='delete'>
-        <ConfirmDelete
-        resourceName='cabins' 
-        disabled={isDeleting} 
-        onConfirm={()=>deleteCabin(cabinID)} />
-      </Modal.Window>
+              <Modal>
+              <Menus.Menu>
+                <Menus.Toggle id={cabinID}/>
+                <Menus.List id={cabinID}>
+                  <Menus.Button icon={<HiSquare2Stack/>}
+                  onClick={()=>handleDuplicate()}
+                  >Duplicate</Menus.Button>
+                  <Modal.Open opens='delete'>
+                     <Menus.Button icon={<HiTrash/>}>Delete</Menus.Button>
+                  </Modal.Open>
+                  
+               </Menus.List>
+            
+            
+              <Modal.Window name='delete'>
+                <ConfirmDelete
+                resourceName='cabins' 
+                disabled={isDeleting} 
+                onConfirm={()=>deleteCabin(cabinID)} />
+              </Modal.Window>
+              </Menus.Menu>
+            </Modal>
    
-     </Modal>
-      <Menus.Menu>
-         <Menus.Toggle id={cabinID}/>
-         <Menus.List id={cabinID}>
-          <Menus.Button icon={<HiSquare2Stack/>}
-          onClick={()=>handleDuplicate()}
-          >Duplicate</Menus.Button>
-          <Menus.Button icon={<HiTrash/>}>Delete</Menus.Button>
-         </Menus.List>
-      </Menus.Menu>
    </div>
    </Table.Row>
 
