@@ -6,6 +6,7 @@ import Table from "../../ui/Table";
 
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
+import { constructFrom } from "date-fns/fp";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -48,6 +49,8 @@ function BookingRow({
     cabins: { name: cabinName },
   },
 }) {
+
+
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
