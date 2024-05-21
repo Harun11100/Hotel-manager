@@ -8,7 +8,7 @@ import Empty from "../../ui/Empty";
 function BookingTable() { 
 
   const {isLoading,bookings}=useBookings()
-  
+  console.log(bookings)
   if (isLoading)return <Spinner/>
   if (!Array.isArray(bookings) || bookings.length === 0) return <Empty resourceName="bookings" />;
  
