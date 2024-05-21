@@ -13,9 +13,15 @@ export async function getBookings({filter,sortBy}){
   // .lte('totalPrice',200)
    
    //Filter
-   if(filter!==null)query=query[filter.method||'eq'](filter.field,filter.value);
+   if(filter)query=query[filter.method||'eq'](filter.field,filter.value);
    
-   const {data,error}=await query;
+   // Sort
+   if(sortBy)
+    query=query.order(sortBy.field,{ascending:sortBy.direction==='asc'})
+
+
+
+   const {data,error}= await query;
   
   
   if (error) {

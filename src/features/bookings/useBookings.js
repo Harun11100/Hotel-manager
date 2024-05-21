@@ -11,13 +11,18 @@ import { useSearchParams } from "react-router-dom";
      {field:'status',value:filterValue}
 
      // sort
-   
+     const sortByRaw= searchParams.get('sortBy')||'startDate-desc';
+     
+     const [field,direction]=sortByRaw.split('-');
+
+     const sortBy={field,direction}
+      
       const{
             isLoading,
             data:bookings,
           } =useQuery({
-          queryKey:['bookings',filter],
-          queryFn :()=>getBookings({filter})
+          queryKey:['bookings',filter,sortBy],
+          queryFn :()=>getBookings({filter,sortBy})
          });
 
         return{isLoading,bookings}
