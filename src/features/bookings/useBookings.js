@@ -5,6 +5,8 @@ import { useSearchParams } from "react-router-dom";
     export default function useBookings(){
       const [searchParams]=useSearchParams()
      
+
+
      //filter
      const filterValue=searchParams.get('status')
      const filter =!filterValue || filterValue==='all'? null:
@@ -16,15 +18,17 @@ import { useSearchParams } from "react-router-dom";
      const [field,direction]=sortByRaw.split('-');
 
      const sortBy={field,direction}
-      
+      // Pagination
+     const page=!searchParams.get('page')?1: Number(searchParams.get('page'));
+
       const{
             isLoading,
-            data:bookings,
+            data:{data:bookings,count}={},
           } =useQuery({
-          queryKey:['bookings',filter,sortBy],
-          queryFn :()=>getBookings({filter,sortBy})
+          queryKey:['bookings',filter,sortBy,page],
+          queryFn :()=>getBookings({filter,sortBy,page})
          });
 
-        return{isLoading,bookings}
+        return{isLoading,bookings,count}
     } 
-    
+     
