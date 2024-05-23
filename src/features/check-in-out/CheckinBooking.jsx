@@ -37,7 +37,7 @@ function CheckinBooking() {
   const moveBack = useMoveBack();
   const {isCheckingIn,checkin}=useCheckin()
 
-  if (isLoading||isLoadingSettings)return <Spinner/>
+  if (isLoading||isLoadingSettings)return<Spinner/>
 
  
 
@@ -53,7 +53,7 @@ function CheckinBooking() {
   const optionalBreakfastPrice= settings.breakfastPrice*numNights*numGuests
 
   function handleCheckin() {
-    if(!confirmPaid)return
+    if(!confirmPaid)return; 
 
     if(addBreakfast){
        checkin({bookingId,breakfast:{
@@ -84,7 +84,7 @@ function CheckinBooking() {
           setConfirmdPaid(false);
         }}
         id='breakfast'>
-          Want to add Breakfast for {formatCurrency(optionalBreakfastPrice)}
+          Want to add Breakfast for {formatCurrency(optionalBreakfastPrice)}  
 
         </Checkbox>
       </Box>)}
@@ -92,7 +92,7 @@ function CheckinBooking() {
       <Box>
 
         <Checkbox onClick={()=>handleCheckin} checked={confirmPaid} disabled={confirmPaid||isCheckingIn} onChange={()=>setConfirmdPaid((confirm)=>!confirm)} id='confirm'>
-          I confirmed that {guests.fulName} has paid the total amount of {!addBreakfast? formatCurrency(totalPrice):`${formatCurrency(optionalBreakfastPrice+totalPrice)}${ formatCurrency(totalPrice)} + ${formatCurrency(optionalBreakfastPrice)}`}
+          I confirmed that {guests.fulName} has paid the total amount of {!addBreakfast? formatCurrency(totalPrice):`${formatCurrency(optionalBreakfastPrice+totalPrice)} (${ formatCurrency(totalPrice)} + ${formatCurrency(optionalBreakfastPrice)})`}
         </Checkbox>
       </Box>
       <ButtonGroup>
