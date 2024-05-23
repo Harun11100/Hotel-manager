@@ -8,9 +8,12 @@ import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
 import { constructFrom } from "date-fns/fp";
 import Menus from "../../ui/Menus";
-import { HiArrowDownOnSquare, HiArrowUpOnSquare, HiEye } from "react-icons/hi2";
+import { HiArrowDownOnSquare, HiArrowUpOnSquare, HiEye, HiTrash } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { useCheckout } from "../check-in-out/useCheckout";
+import { useDeleteBooking } from "./useDeleteBooking";
+import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -56,6 +59,7 @@ function BookingRow({
 
   const navigate=useNavigate()
   const {checkout,isCheckingOut}=useCheckout()
+  const {isDeleting,deleteBooking}=useDeleteBooking()
 
   const statusToTagName = {
     unconfirmed: "blue",
@@ -65,6 +69,7 @@ function BookingRow({
 
   return (
     <Table.Row>
+        <Modal> 
       <Cabin>{cabinName}</Cabin>
 
       <Stacked>
@@ -104,10 +109,27 @@ function BookingRow({
             onClick={()=>checkout(bookingId)}
             disabled={isCheckingOut}
            >Check out</Menus.Button>}
+         
+            {/* status==='checked-out'&& */}
+         
+           <Modal.Open opens="delete">
+           <Menus.Button icon={<HiTrash/>} >Delete</Menus.Button>
+           </Modal.Open>
+           </Menus.List>
+           </Menus.Menu>
+           
+            <Modal.Window name='delete'>
+             <ConfirmDelete resourceName='booking'
+             onConfirm={()=>deleteBooking(bookingId)}/>
+            </Modal.Window>
+           
+           
+           </Modal> 
+           
         
-        </Menus.List>
+      
 
-      </Menus.Menu>
+     
     </Table.Row>
   );
 }
