@@ -15,6 +15,11 @@ ${props=>props.type==='h3'&&
  css`font-size:2rem;
 font-weight: 500;`}
 
+${props=>props.type==='h4'&&
+ css`font-size:3rem;
+font-weight: 600;`}
+text-align: center;
+
 
 
 
