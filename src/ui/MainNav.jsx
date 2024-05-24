@@ -52,25 +52,32 @@ function MainNav() {
       <li><StyledNavLink to='/dashboard'><HiOutlineHome/>
       
       <span>Home</span>
-      </StyledNavLink></li>
+      </StyledNavLink>
+      </li>
       
-      <li><StyledNavLink to='/users'><HiOutlineUser/>
-      <span>Users</span></StyledNavLink></li>
+    
       <li><StyledNavLink to='/bookings'><HiOutlineCalendar/>
       <span>Bookings</span>
-      </StyledNavLink></li>
+      </StyledNavLink>
+      </li>
       <li><StyledNavLink to='/cabins'>
         <HiOutlineHomeModern/>
         <span>
         Cabins
         </span>
-          </StyledNavLink></li>
+          </StyledNavLink>
+          </li>
       
       <li><StyledNavLink to='/settings'>
         <HiOutlineWrenchScrewdriver/>
        <span> Settings</span>
         </StyledNavLink>
         </li>
+
+        <li><StyledNavLink to='/users'><HiOutlineUser/>
+      <span>Users</span></StyledNavLink>
+      </li>
+
         <li><StyledNavLink to='/login'><HiOutlineLogin/>
       <span>Login</span>
       </StyledNavLink>
