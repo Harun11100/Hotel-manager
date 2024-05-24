@@ -15,7 +15,9 @@ function SignupForm() {
     
   function onSubmit({fullName,email,password}){
      signup({fullName,email,password},
-      {onSettled :()=>reset()}
+      {
+        onSettled :()=>reset()
+      }
      )
 
 
@@ -25,7 +27,7 @@ function SignupForm() {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow label="Full name" error={errors?.fullName?.message}>
-        <Input type="text" id="fullName"  {...register('fullName',{required:"This field is required"})}/>
+        <Input type="text" disabled={isLoading} id="fullName"  {...register('fullName',{required:"This field is required"})}/>
       </FormRow>
 
       <FormRow label="Email address" error={errors?.email?.message}>
@@ -48,7 +50,7 @@ function SignupForm() {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button disabled={isLoading}variation="secondary" type="reset" onClick={reset}>
+        <Button disabled={isLoading} variation="secondary" type="reset" onClick={reset}>
           Cancel
         </Button>
         <Button>Create new user</Button>

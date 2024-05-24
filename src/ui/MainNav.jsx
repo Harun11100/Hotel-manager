@@ -65,15 +65,16 @@ function MainNav() {
         Cabins
         </span>
           </StyledNavLink></li>
-      <li><StyledNavLink to='/login'><HiOutlineLogin/>
-      <span>Login</span>
-      </StyledNavLink>
-      </li>
+      
       <li><StyledNavLink to='/settings'>
         <HiOutlineWrenchScrewdriver/>
        <span> Settings</span>
         </StyledNavLink>
         </li>
+        <li><StyledNavLink to='/login'><HiOutlineLogin/>
+      <span>Login</span>
+      </StyledNavLink>
+      </li>
     </NavList>
   )
 }
