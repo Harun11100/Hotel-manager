@@ -54,8 +54,8 @@ function SalesChart({ bookings, numDays }) {
       </Heading>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={data}>
-          <XAxis dataKey="label" stroke={colors.text} />
-          <YAxis unit="$" stroke={colors.text} />
+          <XAxis dataKey="label" stroke='black' />
+          <YAxis unit="$" stroke='black' />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Area
