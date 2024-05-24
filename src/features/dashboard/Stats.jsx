@@ -20,10 +20,10 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
 
   return (
     <>
-      <Stat title="Bookings" color="blue" value={numBookings} icon={<HiOutlineBriefcase />} />
-      <Stat title="Sales" color="green" value={sales} icon={<HiOutlineBanknotes />} />
-      <Stat title="Checkins" color="indigo" value={checkins} icon={<HiOutlineCalendarDays />} />
-      <Stat title="Occupancy rate" color="yellow" value={Math.round(occupation) + "%"} icon={<HiOutlineChartBar />} />
+      <Stat title="Bookings" color="red" value={numBookings} icon={<HiOutlineBriefcase />} />
+      <Stat title="Sales" color="blue" value={sales} icon={<HiOutlineBanknotes />} />
+      <Stat title="Checkins" color="yellow" value={checkins} icon={<HiOutlineCalendarDays />} />
+      <Stat title="Occupancy rate" color="indigo" value={Math.round(occupation) + "%"} icon={<HiOutlineChartBar />} />
     </>
   );
 }
