@@ -19,7 +19,7 @@ function Sidebar() {
       return (
             <StyledSidebar>
                 <Logo/>
-                   <Heading><h3>SuietLife</h3></Heading>
+                   <Heading><h3>Харунов hotel</h3></Heading>
 
                 <MainNav/>
             </StyledSidebar>
